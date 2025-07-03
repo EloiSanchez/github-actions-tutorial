@@ -1,0 +1,24 @@
+name: Fetch data from favorite author
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: "0 8 * * *"
+
+jobs:
+  get-author-data:
+    name: Get Author Data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make directory if not exists
+        run: mkdir -p ex01/data/
+      - name: Remove previous file
+        run: rm ex01/data/authors.json
+      - name: Fetch data and save to file
+        run: curl https://openlibrary.org/search/authors.json?q=${{ secrets.AUTHOR_NAME }} > ex01/data/author.json
+      - name: Add and push new files
+        run: |
+          git add ex01/data/authors.json
+          git commit -m "Add new file from action"
+          git push
