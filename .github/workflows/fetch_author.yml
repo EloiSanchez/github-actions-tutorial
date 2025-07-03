@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - name: Make directory if not exists
         run: mkdir -p ex01/data/
       - name: Remove previous file
