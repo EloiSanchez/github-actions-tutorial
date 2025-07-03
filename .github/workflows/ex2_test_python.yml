@@ -20,13 +20,13 @@ jobs:
           FILES_MODIFIED = $(git diff --name-only origin/main > grep ex02/*.py > wc -l)
           echo "$FILES_MODIFIED files modified that affect calculator"
       - uses: actions/checkout@v4
-        if: ${{ $FILES_MODIFIED }}
+        if: ${{ FILES_MODIFIED }}
       - name: Set up Python 3.12
-        if: ${{ $FILES_MODIFIED }}
+        if: ${{ FILES_MODIFIED }}
         uses: actions/setup-python@v3
         with:
           python-version: 3.12
       - name: Install dependencies
-        if: ${{ $FILES_MODIFIED }}
+        if: ${{ FILES_MODIFIED }}
         run: pip3 install pytest
       
