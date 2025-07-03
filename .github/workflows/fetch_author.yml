@@ -17,7 +17,7 @@ jobs:
       - name: Remove previous file
         run: rm -f ex01/data/authors.json
       - name: Fetch data and save to file
-        run: curl https://openlibrary.org/search/authors.json?q=${{ secrets.AUTHOR_NAME }} > ex01/data/author.json
+        run: curl https://openlibrary.org/search/authors.json?q=${{ secrets.MY_AUTHOR }} > ex01/data/author.json
       - name: Add and push new files
         run: |
           git config --global user.email "eloisanchez16@gmail.com"
