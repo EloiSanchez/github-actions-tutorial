@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Get modified files
         run: |
-          FILES_MODIFIED = $(git diff --name-only origin/main > grep ex02/*.py > wc -l)
+          FILES_MODIFIED = $(git diff --name-only origin/main | grep ex02/*.py | wc -l)
           echo "$FILES_MODIFIED files modified that affect calculator"
       # - uses: actions/checkout@v4
       #   if: $FILES_MODIFIED
