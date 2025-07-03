@@ -14,7 +14,7 @@ jobs:
       - name: Make directory if not exists
         run: mkdir -p ex01/data/
       - name: Remove previous file
-        run: rm ex01/data/authors.json
+        run: rm -f ex01/data/authors.json
       - name: Fetch data and save to file
         run: curl https://openlibrary.org/search/authors.json?q=${{ secrets.AUTHOR_NAME }} > ex01/data/author.json
       - name: Add and push new files
